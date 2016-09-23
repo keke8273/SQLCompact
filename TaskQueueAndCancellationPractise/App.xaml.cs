@@ -20,7 +20,7 @@ namespace TaskQueueAndCancellationPractise
             // So the database file will be placed in:  C:\\Users\\<Username>\\AppData\\Roaming\\            
             AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(path, "Upsoft"));
 
-            using (var context = new ExamManagementDbContext())
+            using (var context = new ExamManagementDbContext("SQLCompactTest"))
             {
                 context.Database.Initialize(true);
 

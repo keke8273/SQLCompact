@@ -7,7 +7,7 @@ namespace TaskQueueAndCancellationPractise.DB
         public const string SchemaName = "ExamManagement";
 
         public ExamManagementDbContext()
-            : base("SQLCompactTest")
+            : base("SqlCeTest")
         {
             base.Configuration.ProxyCreationEnabled = false;
         }
