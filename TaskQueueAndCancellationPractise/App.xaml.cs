@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using TaskQueueAndCancellationPractise.DB;
 
 namespace TaskQueueAndCancellationPractise
 {
@@ -17,6 +13,13 @@ namespace TaskQueueAndCancellationPractise
         {
             base.OnStartup(e);
 
+            using (var context = new ExamManagementDbContext())
+            {
+                context.Database.Initialize(true);
+
+                context.ClassExamed.Add(new ClassExamedEntity(Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid()));
+                context.SaveChanges();
+            }
 
             this.MainWindow = new MainWindow(){DataContext = new MainWindowViewModel()};
             this.MainWindow.Show();
